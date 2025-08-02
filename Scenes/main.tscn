@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq7gl1bxaic2c"]
+
+[ext_resource type="Script" uid="uid://dliolpeuhphcx" path="res://Scripts/tile_map.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://th7ipvi0757s" path="res://Tiles/test.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dyf64a5i7csej" path="res://Tiles/Oak_Tree.png" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dq3dn30wsmbus" path="res://Scenes/player.tscn" id="4_1bvp3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+texture = ExtResource("1_h2yge")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+texture = ExtResource("2_h2yge")
+texture_region_size = Vector2i(64, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 20)
+
+[sub_resource type="TileSet" id="TileSet_h2yge"]
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Land"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Beach"
+terrain_set_0/terrain_1/color = Color(0.636971, 0.651819, 0.399595, 1)
+custom_data_layer_0/name = "is_tree"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_1bvp3")
+sources/1 = SubResource("TileSetAtlasSource_lquwl")
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(583, 332)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_h2yge")
+format = 2
+layer_1/name = "Layer1"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/navigation_enabled = false
+script = ExtResource("1_0xm2m")
+
+[node name="Player" parent="TileMap" instance=ExtResource("4_1bvp3")]
+position = Vector2(-300, -140)
